@@ -1,0 +1,23 @@
+# For description of this format, see https://docs.docker.com/compose/compose-file/
+version: '3'
+
+services:
+  productsearch-service:
+    container_name: productsearch-service
+    build: .
+    image: productsearch-service:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    hostname: postgres
+    environment:
+      # create the specified user with superuser power and a database with the same name
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=productsearch
+      - POSTGRES_DB=productsearch
+    ports:
+      - 5432:5432
