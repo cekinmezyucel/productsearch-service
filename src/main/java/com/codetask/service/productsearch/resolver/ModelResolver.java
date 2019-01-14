@@ -8,13 +8,13 @@ import com.codetask.service.productsearch.repository.Brandrepository;
 
 public class ModelResolver implements GraphQLResolver<Model> {
 
-    private Brandrepository brandrepository;
+  private Brandrepository brandrepository;
 
-    public ModelResolver(Brandrepository brandrepository) {
-        this.brandrepository = brandrepository;
-    }
+  public ModelResolver(Brandrepository brandrepository) {
+    this.brandrepository = brandrepository;
+  }
 
-    public Brand getBrand(Model model) {
-        return new Brand(1L, "Samsung");
-    }
+  public Brand getBrand(Model model) {
+    return new Brand(1L, "Samsung");
+  }
 }

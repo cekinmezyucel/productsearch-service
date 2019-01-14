@@ -12,60 +12,60 @@ import javax.persistence.Table;
 
 @Entity
 @Table(
-        name = "brand",
-        indexes = {@Index(name = "ix_brand_name", columnList = "name", unique = true)})
+    name = "brand",
+    indexes = {@Index(name = "ix_brand_name", columnList = "name", unique = true)})
 public class Brand extends BaseEntity {
 
-    private static final long serialVersionUID = 4520897126442397305L;
+  private static final long serialVersionUID = 4520897126442397305L;
 
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+  @Id
+  @Column(name = "id", nullable = false)
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    public Brand(Long id, String name) {
-        this.id = id;
-        this.name = name;
+  public Brand(Long id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public Long getId() {
-        return id;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    Brand brand = (Brand) o;
+    return id.equals(brand.id);
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Brand brand = (Brand) o;
-        return id.equals(brand.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Brand{" + "id=" + id + ", name='" + name + '\'' + '}';
-    }
+  @Override
+  public String toString() {
+    return "Brand{" + "id=" + id + ", name='" + name + '\'' + '}';
+  }
 }
