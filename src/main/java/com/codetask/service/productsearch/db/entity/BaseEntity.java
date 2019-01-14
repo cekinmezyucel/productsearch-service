@@ -1,4 +1,4 @@
-package com.codetask.service.productsearch.entity;
+package com.codetask.service.productsearch.db.entity;
 
 import java.io.Serializable;
 import java.util.Date;

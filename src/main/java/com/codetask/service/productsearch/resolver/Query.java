@@ -1,34 +1,27 @@
 package com.codetask.service.productsearch.resolver;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
-import com.codetask.service.productsearch.entity.Brand;
-import com.codetask.service.productsearch.entity.Model;
-import com.codetask.service.productsearch.repository.Brandrepository;
-import com.codetask.service.productsearch.repository.ModelRepository;
+import com.codetask.service.productsearch.db.entity.Brand;
+import com.codetask.service.productsearch.db.entity.Model;
+import com.codetask.service.productsearch.db.repository.BrandRepository;
+import com.codetask.service.productsearch.db.repository.ModelRepository;
 
 public class Query implements GraphQLQueryResolver {
 
-  private Brandrepository brandrepository;
+  private BrandRepository brandrepository;
   private ModelRepository modelRepository;
 
-  public Query(Brandrepository brandrepository, ModelRepository modelRepository) {
+  public Query(BrandRepository brandrepository, ModelRepository modelRepository) {
     this.brandrepository = brandrepository;
     this.modelRepository = modelRepository;
   }
 
-  public List<Model> findAllModels() {
-    List<Model> models = new ArrayList<>();
-    models.add(new Model(1L, "Galaxy 7", new Brand(1L, "Samsung")));
-    return models;
+  public Iterable<Model> findAllModels() {
+    return modelRepository.findAll();
   }
 
-  public List<Brand> findAllBrands() {
-    List<Brand> brands = new ArrayList<>();
-    brands.add(new Brand(1L, "Samsung"));
-    return brands;
+  public Iterable<Brand> findAllBrands() {
+    return brandrepository.findAll();
   }
 }

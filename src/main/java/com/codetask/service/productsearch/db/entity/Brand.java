@@ -1,4 +1,4 @@
-package com.codetask.service.productsearch.entity;
+package com.codetask.service.productsearch.db.entity;
 
 import java.util.Objects;
 
@@ -8,20 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(
-    name = "model",
-    indexes = {
-      @Index(name = "ix_model_name", columnList = "name", unique = false),
-      @Index(name = "ix_model_brand", columnList = "brand_id", unique = false)
-    })
-public class Model extends BaseEntity {
+    name = "brand",
+    indexes = {@Index(name = "ix_brand_name", columnList = "name", unique = true)})
+public class Brand extends BaseEntity {
 
-  private static final long serialVersionUID = -4756852399995609239L;
+  private static final long serialVersionUID = 4520897126442397305L;
 
   @Id
   @Column(name = "id", nullable = false)
@@ -31,14 +26,11 @@ public class Model extends BaseEntity {
   @Column(name = "name", nullable = false)
   private String name;
 
-  @ManyToOne
-  @JoinColumn(name = "brand_id", nullable = false, updatable = false)
-  private Brand brand;
+  public Brand() {}
 
-  public Model(Long id, String name, Brand brand) {
+  public Brand(Long id, String name) {
     this.id = id;
     this.name = name;
-    this.brand = brand;
   }
 
   public Long getId() {
@@ -57,14 +49,6 @@ public class Model extends BaseEntity {
     this.name = name;
   }
 
-  public Brand getBrand() {
-    return brand;
-  }
-
-  public void setBrand(Brand brand) {
-    this.brand = brand;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -73,8 +57,8 @@ public class Model extends BaseEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Model model = (Model) o;
-    return id.equals(model.id);
+    Brand brand = (Brand) o;
+    return id.equals(brand.id);
   }
 
   @Override
@@ -84,6 +68,6 @@ public class Model extends BaseEntity {
 
   @Override
   public String toString() {
-    return "Model{" + "id=" + id + ", name='" + name + '\'' + ", brand=" + brand + '}';
+    return "Brand{" + "id=" + id + ", name='" + name + '\'' + '}';
   }
 }
