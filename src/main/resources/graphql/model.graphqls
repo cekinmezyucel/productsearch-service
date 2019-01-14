@@ -1,0 +1,9 @@
+type Model{
+    id: ID!
+    name: String!
+    brand: Brand!
+}
+
+extend type Query {
+    findAllModels: [Model]!
+}

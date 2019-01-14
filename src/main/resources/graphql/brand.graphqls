@@ -1,0 +1,8 @@
+type Brand {
+    id: ID!
+    name: String!
+}
+
+type Query {
+    findAllBrands: [Brand]!
+}
