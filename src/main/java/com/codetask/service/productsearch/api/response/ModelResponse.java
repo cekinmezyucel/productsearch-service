@@ -3,7 +3,6 @@ package com.codetask.service.productsearch.api.response;
 import java.util.Objects;
 
 import com.codetask.service.productsearch.api.ResponseBody;
-import com.codetask.service.productsearch.db.entity.Brand;
 
 public class ModelResponse implements ResponseBody {
 
@@ -11,14 +10,14 @@ public class ModelResponse implements ResponseBody {
 
   private Long id;
   private String name;
-  private Brand brand;
+  private BrandResponse brandResponse;
 
   public ModelResponse() {}
 
-  public ModelResponse(Long id, String name, Brand brand) {
+  public ModelResponse(Long id, String name, BrandResponse brandResponse) {
     this.id = id;
     this.name = name;
-    this.brand = brand;
+    this.brandResponse = brandResponse;
   }
 
   public Long getId() {
@@ -37,12 +36,12 @@ public class ModelResponse implements ResponseBody {
     this.name = name;
   }
 
-  public Brand getBrand() {
-    return brand;
+  public BrandResponse getBrandResponse() {
+    return brandResponse;
   }
 
-  public void setBrand(Brand brand) {
-    this.brand = brand;
+  public void setBrandResponse(BrandResponse brandResponse) {
+    this.brandResponse = brandResponse;
   }
 
   @Override
@@ -64,6 +63,14 @@ public class ModelResponse implements ResponseBody {
 
   @Override
   public String toString() {
-    return "ModelResponse{" + "id=" + id + ", name='" + name + '\'' + ", brand=" + brand + '}';
+    return "ModelResponse{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", brandResponse="
+        + brandResponse
+        + '}';
   }
 }
