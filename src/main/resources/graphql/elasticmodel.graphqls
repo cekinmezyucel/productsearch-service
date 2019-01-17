@@ -1,0 +1,9 @@
+type ElasticModel{
+    id: ID!
+    modelName: String!
+    brandName: String!
+}
+
+extend type Query {
+    searchModelByKey(key: String!): [ElasticModel]!
+}
