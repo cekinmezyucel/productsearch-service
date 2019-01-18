@@ -11,6 +11,7 @@ Product Search Service developed with Java 8, a number of technologies and open 
 * [PostgreSQL]
 * [ElasticSearch]
 * [GraphQL]
+* [GraphiQL]
 * [Docker]
 * [Gradle]
 * [JUnit]
@@ -99,8 +100,6 @@ New Model Response
 ```
 
 
-
-
 [SpringBoot]: <https://projects.spring.io/spring-boot/>
 [PostgreSQL]: <https://www.postgresql.org/>
 [Docker]: <https://www.docker.com/>
@@ -109,4 +108,5 @@ New Model Response
 [ElasticSearch]: <https://www.elastic.co/products/elasticsearch>
 [JDK8]: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
 [GraphQL]: <https://graphql.org/>
+[GraphiQL]: <https://electronjs.org/apps/graphiql>
 [Product Search Web]: <https://github.com/cekinmezyucel/productsearch-web>
