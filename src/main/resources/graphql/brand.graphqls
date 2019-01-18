@@ -1,8 +1,8 @@
-type Brand {
+type BrandResponse {
     id: ID!
     name: String!
 }
 
 type Query {
-    findAllBrands: [Brand]!
+    findAllBrands: [BrandResponse]!
 }

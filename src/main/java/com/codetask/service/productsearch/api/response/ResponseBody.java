@@ -1,4 +1,4 @@
-package com.codetask.service.productsearch.api;
+package com.codetask.service.productsearch.api.response;
 
 import java.io.Serializable;
 

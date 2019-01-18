@@ -1,9 +1,9 @@
-type Model{
+type ModelResponse{
     id: ID!
     name: String!
-    brand: Brand!
+    brandResponse: BrandResponse!
 }
 
 extend type Query {
-    findAllModels: [Model]!
+    findAllModels: [ModelResponse]!
 }

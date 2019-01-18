@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.codetask.service.productsearch.elasticsearch.service.ElasticModelService;
+import com.codetask.service.productsearch.exception.model.ProductSearchException;
 
 @Component
 public class ModelMigrator {
@@ -26,10 +27,21 @@ public class ModelMigrator {
     this.elasticModelService = elasticModelService;
   }
 
+  /**
+   * Populates ElasticSearch from database when the application starts.
+   *
+   * <p>{@link Transactional}
+   *
+   * <p>{@link PostConstruct}
+   */
   @PostConstruct
   @Transactional
   public void populateElasticSearch() {
-    operations.putMapping(ElasticModel.class);
-    elasticModelRepository.saveAll(elasticModelService.getAllElasticModels());
+    try {
+      operations.putMapping(ElasticModel.class);
+      elasticModelRepository.saveAll(elasticModelService.getAllElasticModels());
+    } catch (Exception e) {
+      throw new ProductSearchException("PRODUCTSEARCH003", e);
+    }
   }
 }

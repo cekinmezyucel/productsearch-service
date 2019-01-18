@@ -1,4 +1,4 @@
-package com.codetask.service.productsearch.resolver;
+package com.codetask.service.productsearch.api.resolver;
 
 import java.util.Optional;
 
@@ -16,6 +16,12 @@ public class ModelResolver implements GraphQLResolver<Model> {
     this.brandrepository = brandrepository;
   }
 
+  /**
+   * {@link Brand} resolver for model.
+   *
+   * @param model
+   * @return @{@link Brand}
+   */
   public Brand getBrand(Model model) {
     Optional<Brand> optionalBrand = brandrepository.findById(model.getBrand().getId());
 

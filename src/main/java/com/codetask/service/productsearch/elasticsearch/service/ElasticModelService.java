@@ -1,6 +1,5 @@
 package com.codetask.service.productsearch.elasticsearch.service;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,12 +29,18 @@ public class ElasticModelService {
   }
 
   public List<ElasticModel> getAllElasticModels() {
-    return modelService.getAllModels().stream()
+    return modelService.findAllModels().stream()
         .map(m -> new ElasticModel(m.getId(), m.getName(), m.getBrandResponse().getName()))
         .collect(Collectors.toList());
   }
 
-  public List<ElasticModel> searchByKey(String key) throws IOException {
+  /**
+   * Finds eligible models from ElasticSearch client. Search with string query and fuzzy query.
+   *
+   * @param key
+   * @return List of {@link ElasticModel}
+   */
+  public List<ElasticModel> searchByKey(String key) {
     QueryBuilder query =
         QueryBuilders.boolQuery()
             .should(

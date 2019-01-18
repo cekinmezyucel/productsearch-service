@@ -2,8 +2,6 @@ package com.codetask.service.productsearch.api.response;
 
 import java.util.Objects;
 
-import com.codetask.service.productsearch.api.ResponseBody;
-
 public class BrandResponse implements ResponseBody {
 
   private static final long serialVersionUID = 2291597948439440307L;
@@ -13,6 +11,12 @@ public class BrandResponse implements ResponseBody {
 
   public BrandResponse() {}
 
+  /**
+   * {@link BrandResponse} all argument constructor.
+   *
+   * @param id
+   * @param name
+   */
   public BrandResponse(Long id, String name) {
     this.id = id;
     this.name = name;

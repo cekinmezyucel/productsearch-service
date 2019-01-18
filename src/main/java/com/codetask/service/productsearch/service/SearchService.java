@@ -10,6 +10,7 @@ import com.codetask.service.productsearch.db.entity.Model;
 @Service
 public class SearchService {
 
+  // TODO: implement and bind to base SearchService.
   public List<Model> searchByKey(String key) {
     return new ArrayList<>();
   }

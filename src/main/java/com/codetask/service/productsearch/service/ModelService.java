@@ -4,16 +4,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codetask.service.productsearch.api.response.BrandResponse;
 import com.codetask.service.productsearch.api.response.ModelResponse;
-import com.codetask.service.productsearch.db.entity.Model;
 import com.codetask.service.productsearch.db.repository.ModelRepository;
 
 @Service
 public class ModelService {
+
+  static final Logger LOG = LoggerFactory.getLogger(ModelService.class);
 
   private ModelRepository modelRepository;
 
@@ -22,9 +25,14 @@ public class ModelService {
     this.modelRepository = modelRepository;
   }
 
-  public List<ModelResponse> getAllModels() {
-    Iterable<Model> models = modelRepository.findAll();
-    return StreamSupport.stream(models.spliterator(), false)
+  /**
+   * Finds and retrieves all {@link com.codetask.service.productsearch.db.entity.Model} entries from
+   * database.
+   *
+   * @return @{@link List}
+   */
+  public List<ModelResponse> findAllModels() {
+    return StreamSupport.stream(modelRepository.findAll().spliterator(), false)
         .map(
             m ->
                 new ModelResponse(
