@@ -32,10 +32,20 @@ public class Model extends BaseEntity {
   private String name;
 
   @ManyToOne
-  @JoinColumn(name = "brand_id", nullable = false, updatable = false)
+  @JoinColumn(name = "brand_id", nullable = false)
   private Brand brand;
 
   public Model() {}
+
+  public Model(String name, Long brandId) {
+    this.name = name;
+    brand = new Brand(brandId);
+  }
+
+  public Model(String name, Brand brand) {
+    this.name = name;
+    this.brand = brand;
+  }
 
   public Model(Long id, String name, Brand brand) {
     this.id = id;

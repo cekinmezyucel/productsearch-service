@@ -28,6 +28,14 @@ public class Brand extends BaseEntity {
 
   public Brand() {}
 
+  public Brand(Long id) {
+    this.id = id;
+  }
+
+  public Brand(String name) {
+    this.name = name;
+  }
+
   public Brand(Long id, String name) {
     this.id = id;
     this.name = name;

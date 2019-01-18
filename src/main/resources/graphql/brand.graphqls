@@ -6,3 +6,7 @@ type BrandResponse {
 type Query {
     findAllBrands: [BrandResponse]!
 }
+
+type Mutation {
+    newBrand(name: String!) : BrandResponse!
+}

@@ -7,3 +7,7 @@ type ModelResponse{
 extend type Query {
     findAllModels: [ModelResponse]!
 }
+
+extend type Mutation {
+    newModel(name: String!, brandId: ID!) : ModelResponse!
+}

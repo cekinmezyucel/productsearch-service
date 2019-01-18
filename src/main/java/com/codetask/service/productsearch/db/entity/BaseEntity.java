@@ -2,9 +2,11 @@ package com.codetask.service.productsearch.db.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import javax.persistence.Version;
 
 @MappedSuperclass
@@ -21,6 +23,17 @@ public abstract class BaseEntity implements Serializable {
   @Version
   @Column(name = "VERSION", nullable = false)
   private Integer version;
+
+  @PrePersist
+  public void prePersist() {
+    if (Objects.isNull(modifyUser)) {
+      modifyUser = "API";
+    }
+
+    if (Objects.isNull(modifyDate)) {
+      modifyDate = new Date();
+    }
+  }
 
   public String getModifyUser() {
     return modifyUser;

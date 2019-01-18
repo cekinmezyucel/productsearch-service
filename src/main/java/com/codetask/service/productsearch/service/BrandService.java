@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codetask.service.productsearch.api.response.BrandResponse;
+import com.codetask.service.productsearch.db.entity.Brand;
 import com.codetask.service.productsearch.db.repository.BrandRepository;
 
 @Service
@@ -34,5 +35,16 @@ public class BrandService {
     return StreamSupport.stream(brandRepository.findAll().spliterator(), false)
         .map(b -> new BrandResponse(b.getId(), b.getName()))
         .collect(Collectors.toList());
+  }
+
+  /**
+   * Creates a new {@link Brand}
+   *
+   * @param name
+   * @return @{@link BrandResponse}
+   */
+  public BrandResponse addNewBrand(String name) {
+    Brand savedBrand = brandRepository.save(new Brand(name));
+    return new BrandResponse(savedBrand.getId(), savedBrand.getName());
   }
 }

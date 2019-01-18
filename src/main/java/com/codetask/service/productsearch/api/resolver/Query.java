@@ -7,7 +7,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.codetask.service.productsearch.api.response.BrandResponse;
 import com.codetask.service.productsearch.api.response.ModelResponse;
 import com.codetask.service.productsearch.elasticsearch.ElasticModel;
-import com.codetask.service.productsearch.elasticsearch.service.ElasticModelService;
+import com.codetask.service.productsearch.elasticsearch.ElasticModelService;
 import com.codetask.service.productsearch.service.BrandService;
 import com.codetask.service.productsearch.service.ModelService;
 

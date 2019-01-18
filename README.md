@@ -43,6 +43,64 @@ $ cd ${project.basedir}
 $ gradle clean build
 ```
 
+### Test Mutation With GraphiQL
+http://localhost:8080/graphiql
+
+New Brand Request
+```json
+mutation {
+  newBrand(name: "Huawei"){
+    id
+    name
+  }
+}
+```
+
+New Brand Response
+```json
+{
+  "data": {
+    "newBrand": {
+      "id": "1",
+      "name": "Huawei"
+    }
+  }
+}
+```
+
+New Model Request
+```json
+mutation {
+  newModel(name: "MateBook X Pro" brandId: 1){
+    id
+    name
+    brandResponse{
+      id
+      name
+    }
+  }
+}
+```
+
+New Model Response
+```json
+{
+  "data": {
+    "newModel": {
+      "id": "2",
+      "name": "MateBook X Pro",
+      "brandResponse": {
+        "id": "1",
+        "name": "Huawei"
+      }
+    }
+  }
+}
+```
+
+
+
+
 [SpringBoot]: <https://projects.spring.io/spring-boot/>
 [PostgreSQL]: <https://www.postgresql.org/>
 [Docker]: <https://www.docker.com/>
