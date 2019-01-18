@@ -5,9 +5,7 @@ import com.codetask.service.productsearch.exception.model.ExceptionResult;
 
 public class ExceptionUtil {
 
-  private ExceptionUtil() {
-    super();
-  }
+  private ExceptionUtil() {}
 
   public static ExceptionResult convertException(BaseException exception) {
     return new ExceptionResult(
